@@ -9,6 +9,10 @@ class Image
       puts i.join
     end
   end
+
+  def blur
+  
+  end
 end
 
 
