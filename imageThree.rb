@@ -4,19 +4,23 @@ class Image
     @image = image
   end
 
-  def output_image(a)
-    a.each do |pr|
+  def output_image
+    
+    c = blur(blur(@image))
+    c.each do |pr|
       puts pr.join
     end  
   end
 
-  def blur
+
+  def blur(z)
     b = []
-    @image.each_index do|i|
-      a = @image[i]
-      d = @image[i + 1]
-      e = @image[i - 1]
+    z.each_index do|i|
+      a = z[i]
+      d = z[i + 1]
+      e = z[i - 1]
       c = []
+      x = 0
       a.each_index do |j|
         if a[j] == 1
           c[j] = 1
@@ -42,7 +46,7 @@ end
 
 
 image = Image.new([
-   [0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0],
@@ -55,4 +59,4 @@ image = Image.new([
   [0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,1]
 ])
-image.output_image(image.blur)
+image.output_image
