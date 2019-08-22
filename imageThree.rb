@@ -6,45 +6,45 @@ class Image
 
   def output_image
     
-    c = blur(blur(blur(@image)))
-    c.each do |pr|
+    final_array = blur(blur(blur(@image)))
+    final_array.each do |pr|
       puts pr.join
     end  
   end
 
 
   def blur(array)
-    b = []
-    array.each_index do|i|
-      a = array[i]
-      c = []
-      a.each_index do |j|
+    blurred = []
+    array.each_index do|row|
+      a = array[row]
+      col_array = []
+      a.each_index do |col|
        
-        if a[j] == 1
-          c[j] = 1
-          if j - 1 >= 0
-            c[j - 1] = 1
+        if a[col] == 1
+          col_array[col] = 1
+          if col - 1 >= 0
+            col_array[col - 1] = 1
           end
-          if j + 1 < a.length
-            c[j + 1] = 1
+          if col + 1 < a.length
+            col_array[col + 1] = 1
           end
-          if i - 1 >= 0  
-            b[i - 1][j] = 1
+          if row - 1 >= 0  
+            blurred[row - 1][col] = 1
           end
         end
 
-        if array[i - 1][j] == 1 && i > 0 
-          c[j] = 1
+        if array[row - 1][col] == 1 && row > 0 
+          col_array[col] = 1
         end
 
-        if c.length != a.length
-          c << 0
+        if col_array.length != a.length
+          col_array << 0
         end
 
       end
-      b << c
+      blurred << col_array
     end
-    return b
+    return blurred
   end
 end
 

@@ -12,10 +12,10 @@ class Image
 
   def blur
     b = []
-    @image.each_index do|i|
+    @image.each_index do|row|
       a = @image[i]
       c = []
-      a.each_index do |j|
+      a.each_index do |col|
        
         if a[j] == 1
           c[j] = 1
