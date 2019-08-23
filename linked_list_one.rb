@@ -15,13 +15,37 @@ class LinkedListNode
       return
     end
   end
+end
 
-  def reverse_list(revlist)
-    stack = Stack.new
-    while revlist
-     
-    end
+class Stack
+  attr_reader :data
+
+  def initialize
+      @data = nil
   end
+
+  # Push a value onto the stack
+  def push(value)
+    @data = LinkedListNode.new(value, @data)
+  end
+
+  # Pop an item off the stack.
+  # Remove the last item that was pushed onto the
+  # stack and return the value to the user
+  def pop   
+    return @data   
+    @data = @data.next_node
+    
+  end
+end
+
+def reverse_list(revlist)
+  stack = Stack.new
+  while revlist
+    stack.push(revlist.value)
+    revlist = revlist.next_node
+  end
+  return stack.pop
 end
 
 node1 = LinkedListNode.new(37)
@@ -35,3 +59,6 @@ puts "---------"
 revlist = reverse_list(node3)
 
 node3.print_values(revlist)
+
+stack = Stack.new
+stack.push(node3)

@@ -17,17 +17,24 @@ class Stack
 
     # Push a value onto the stack
     def push(value)
-      node = LinkedListNode.new(value)
-      puts node
+      @data = LinkedListNode.new(value, @data)
+      
     end
 
     # Pop an item off the stack.
     # Remove the last item that was pushed onto the
     # stack and return the value to the user
     def pop
-      
+      puts @data.value.inspect
+      @data = @data.next_node 
     end
 
 end
 stack = Stack.new
 stack.push(1)
+stack.push(2)
+stack.push(3)
+stack.push(4)
+stack.push(5)
+stack.pop
+stack.pop
