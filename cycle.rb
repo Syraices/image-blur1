@@ -12,13 +12,7 @@ def double(list)
 
   while list
    
-    puts list_b.value
     
-    puts list.value
-    puts '---'
-    # if list != list_b
-    #   puts 'no loop found'
-    # else 
     if list == list_b
       puts 'loop found'
       break
